@@ -1,0 +1,4 @@
+{
+  "*": ["cspell"],
+  "*.{js,jsx,ts,tsx,json,md,yml}": ["prettier --write"]
+}

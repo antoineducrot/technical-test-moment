@@ -1,0 +1,12 @@
+{
+  "ignorePaths": [
+    ".eslintignore",
+    "package.json",
+    ".gitignore",
+    "/node_modules",
+    "nest-cli.json",
+    "/.husky"
+  ],
+  "ignoreWords": ["clsx"],
+  "words": []
+}

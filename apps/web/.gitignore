@@ -1,0 +1,7 @@
+# next.js
+.next/
+out/
+.swc/
+
+# typescript
+next-env.d.ts

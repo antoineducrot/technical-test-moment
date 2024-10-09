@@ -1,40 +1,49 @@
 version: "3.8"
 services:
   web:
+    container_name: moment-web
     build:
       context: .
+      args:
+        - NEXT_PUBLIC_API_URL=http://moment-api:${API_PORT}
       dockerfile: apps/web/Dockerfile.mono
-    container_name: technical-test-web
     ports:
-      - "3000:3000"
+      - "${WEB_PORT}:3000"
     depends_on:
       - api
+    networks:
+      - api
     environment:
-      - NEXT_PUBLIC_API_URL=http://api:3001
+      - NEXT_PUBLIC_API_URL=http://moment-api:${API_PORT}
 
   api:
+    container_name: moment-api
     build:
       context: .
       dockerfile: apps/api/Dockerfile.mono
-    container_name: technical-test-api
     ports:
-      - "4000:4000"
+      - "${API_PORT}:4000"
     depends_on:
-      - mongo
+      - database
     networks:
-      - backend
+      - api
+      - database
     environment:
-      - MONGO_URI=mongodb://mongo:27017/nestdb
-      - NODE_ENV=development
+      - PORT=4000
+      - DATABASE_URL=mongodb://moment-database:27017/moment
+      - JWT_SECRET=${API_JWT_SECRET}
+      - JWT_EXPIRES_IN=${API_JWT_EXPIRES_IN}
 
-  mongo:
+  database:
+    container_name: moment-database
     image: mongo:latest
-    container_name: mongodb
     ports:
       - "27017:27017"
     networks:
-      - backend
+      - database
 
 networks:
-  backend:
+  api:
+    driver: bridge
+  database:
     driver: bridge

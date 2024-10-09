@@ -1,6 +1,6 @@
-# Build files
-dist
-.next
+# build
+dist/
+.next/
 
-# Node modules
-node_modules
+# node modules
+node_modules/

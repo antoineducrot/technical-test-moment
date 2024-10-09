@@ -1,0 +1,6 @@
+# Build files
+dist
+.next
+
+# Node modules
+node_modules

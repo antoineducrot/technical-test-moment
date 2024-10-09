@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile.mono
+    container_name: technical-test-web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    environment:
+      - NEXT_PUBLIC_API_URL=http://api:3001
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile.mono
+    container_name: technical-test-api
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    networks:
+      - backend
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/nestdb
+      - NODE_ENV=development
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

@@ -13,7 +13,7 @@
     "type-check": "turbo type-check",
     "clean": "turbo clean",
     "format": "prettier --write .",
-    "prepare": "husky",
+    "prepare": "husky || true",
     "cspell": "cspell --no-summary --no-progress .",
     "commit": "cz",
     "lint-staged": "lint-staged"
@@ -31,7 +31,7 @@
     "turbo": "^2.1.3"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "packageManager": "npm@10.8.2",
   "workspaces": [

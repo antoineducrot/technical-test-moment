@@ -5,7 +5,9 @@
     ".gitignore",
     "/node_modules",
     "nest-cli.json",
-    "/.husky"
+    "/.husky",
+    "docker-compose.yml",
+    "Dockerfile*"
   ],
   "ignoreWords": ["clsx"],
   "words": []

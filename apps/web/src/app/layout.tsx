@@ -1,23 +1,40 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { type Metadata } from "next";
+import { Inter as FontSans } from "next/font/google";
+import { type ReactNode } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+import { cn } from "@/lib/style/cn";
 
-export const metadata: Metadata = {
-  title: "Technical test for moment",
-  description: "Technical test for moment",
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+const metadata: Metadata = {
+  title: "Moment App",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
+}: Readonly<{
+  children: ReactNode;
+}>) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
-}
+};
+
+export { RootLayout as default, metadata };

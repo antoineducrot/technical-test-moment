@@ -3,7 +3,6 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "dev": {
@@ -11,11 +10,22 @@
       "persistent": true
     },
     "start": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "lint": {},
     "type-check": {},
     "test": {},
+    "db:generate": {
+      "inputs": ["prisma/schema.prisma"],
+      "outputs": ["node_modules/@prisma/client"]
+    },
+    "db:push": {
+      "cache": false
+    },
+    "db:migrate-deploy": {
+      "cache": false
+    },
     "clean": {
       "cache": false
     }

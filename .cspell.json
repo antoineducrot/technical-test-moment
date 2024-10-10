@@ -1,14 +1,24 @@
 {
   "ignorePaths": [
-    ".eslintignore",
     "package.json",
-    ".gitignore",
-    "/node_modules",
     "nest-cli.json",
-    "/.husky",
-    "docker-compose.yml",
-    "Dockerfile*"
+    ".eslintignore",
+    ".gitignore",
+    "**/Dockerfile*",
+    "**/node_modules",
+    "**/docker-compose*.yml",
+    "**/dist/",
+    "**/.husky",
+    "**/migrations"
   ],
-  "ignoreWords": ["clsx"],
+  "ignoreWords": [
+    "clsx",
+    "dtos",
+    "nestjs",
+    "nextjs",
+    "cuid",
+    "datasource",
+    "pgadmin"
+  ],
   "words": []
 }

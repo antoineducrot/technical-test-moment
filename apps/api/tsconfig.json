@@ -13,6 +13,9 @@
     "incremental": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

@@ -16,7 +16,8 @@ COPY --from=extractor /app/out/json/ .
 RUN npm ci 
 
 COPY --from=extractor /app/out/full/ .
-RUN npx turbo build --filter=api... 
+RUN npx turbo db:generate --filter=api...
+RUN npx turbo build --filter=api...
  
 FROM base AS installer
 WORKDIR /app
@@ -37,6 +38,7 @@ USER nestjs
 
 COPY --from=builder --chown=nestjs:nodejs /app/apps/api/dist ./apps/api/dist
 COPY --from=installer --chown=nestjs:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=nestjs:nodejs /app/node_modules/.prisma/client ./node_modules/.prisma/client
 COPY --from=installer --chown=nestjs:nodejs /app/apps/api/node_modules ./apps/api/node_modules
 
 CMD node apps/api/dist/main.js

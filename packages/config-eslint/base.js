@@ -38,6 +38,7 @@ module.exports = {
   overrides: [
     {
       files: ["*.test.ts", "*.test.tsx"],
+      extends: ["plugin:jest/recommended"],
       env: {
         jest: true,
       },

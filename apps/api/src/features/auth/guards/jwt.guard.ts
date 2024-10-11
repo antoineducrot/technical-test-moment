@@ -7,7 +7,6 @@ import { CurrentUser } from "@/features/auth/decorators/current-user.decorator";
 import { AuthAuthorizationHeaderNotFoundException } from "@/features/auth/exceptions/auth-authorization-header-not-found.exception";
 import { AuthInvalidTokenException } from "@/features/auth/exceptions/auth-invalid-token.exception";
 import { AuthInvalidTokenFormatException } from "@/features/auth/exceptions/auth-invalid-token-format.exception";
-import { AuthTokenNotFoundException } from "@/features/auth/exceptions/auth-token-not-found.exception";
 
 @Injectable()
 class JwtAuthGuard implements CanActivate {
@@ -32,10 +31,6 @@ class JwtAuthGuard implements CanActivate {
 
     const token = this.extractTokenFromHeader(request);
 
-    if (!token) {
-      throw new AuthTokenNotFoundException();
-    }
-
     try {
       request.user = await this.authService.validateAccessToken(token);
     } catch {
@@ -45,7 +40,7 @@ class JwtAuthGuard implements CanActivate {
     return true;
   }
 
-  private extractTokenFromHeader(request: Request): string | undefined {
+  private extractTokenFromHeader(request: Request) {
     if (!request.headers.authorization) {
       throw new AuthAuthorizationHeaderNotFoundException();
     }

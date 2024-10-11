@@ -34,7 +34,7 @@ class ServerValidationException extends DefaultException {
       {
         type: "ServerValidation",
         errors,
-        message: `validation errors: ${JSON.stringify(errors)}`,
+        message: `Validation failed`,
       },
       HttpStatus.BAD_REQUEST,
     );

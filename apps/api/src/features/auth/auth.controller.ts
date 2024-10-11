@@ -63,6 +63,6 @@ export class AuthController {
   @ApiOperation({ summary: "Verify the validity of a token" })
   @ApiBearerAuth()
   async verify() {
-    return { message: "Token is valid" };
+    return { message: "token is valid" };
   }
 }

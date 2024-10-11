@@ -1,0 +1,12 @@
+{
+  "moduleFileExtensions": ["ts", "tsx", "js", "json"],
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "rootDir": ".",
+  "testRegex": "src/.*\\.test.ts$",
+  "moduleNameMapper": {
+    "@/(.*)$": "<rootDir>/src/$1"
+  },
+  "coverageReporters": ["json", "lcov"]
+}

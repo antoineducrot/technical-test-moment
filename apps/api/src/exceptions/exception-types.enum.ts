@@ -4,7 +4,6 @@ const exceptionTypes = {
   authInvalidCredentials: "AuthInvalidCredentials",
   authInvalidToken: "AuthInvalidToken",
   authInvalidTokenFormat: "AuthInvalidTokenFormat",
-  authTokenNotFound: "AuthTokenNotFound",
   // Users
   usersEmailAlreadyExist: "UsersEmailAlreadyExist",
   usersUsernameAlreadyExist: "UsersUsernameAlreadyExist",

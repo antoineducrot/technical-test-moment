@@ -54,7 +54,7 @@ To configure the environment, duplicate the `.env.example` file into `.env` file
 3. **Setup the `.env` file:**
 
    ```bash
-   cp .env.example .env
+   cp .env.example .env && cp apps/api/.env.example apps/api/.env && cp apps/web/.env.example apps/web/.env
    ```
 
    Update the values as needed
@@ -64,7 +64,7 @@ To configure the environment, duplicate the `.env.example` file into `.env` file
 To spin up the PostgreSQL database and PGAdmin for development, run:
 
 ```bash
-cp .env.example .env
+npm run dev:db:start
 ```
 
 Once the database is ready, generate Prisma client:
@@ -85,11 +85,30 @@ Finally, to launch the development servers for both the api and web app:
 npm run dev
 ```
 
+You will find:
+
+- the api at `http://localhost:4000`
+- the web at `http://localhost:3000`
+- the pgadmin at `http://localhost:8888`
+
 To stop the development database:
 
 ```bash
 npm run dev:db:stop
 ```
+
+#### Frontend
+
+The frontend of this application is built using Next.js, styled with Tailwind CSS, and includes shad/cn components for UI elements. There are three main routes:
+
+- `/`: The home page, which requires authentication. Users who are not authenticated will be redirected to the login page.
+- `/login`: The login page, where users can enter their credentials to authenticate.
+- `/register`: The registration page, where new users can create an account.
+  The app uses a secure authentication mechanism with JWT tokens to protect the / route and manage user sessions.
+
+#### API
+
+The backend API is developed using Nest.js with Prisma ORM to interact with a PostgreSQL database. Swagger is integrated for API documentation and is available at the root `/` path. Developers can visit this route to explore the available endpoints, view request/response schemas using Swagger's interactive interface.
 
 ### Production
 

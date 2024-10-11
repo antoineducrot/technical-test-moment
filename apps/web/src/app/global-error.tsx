@@ -1,9 +1,9 @@
 "use client";
 
 import { Inter as FontSans } from "next/font/google";
+import Link from "next/link";
 
 import { H1, P } from "@/components/typography";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/style/cn";
 
 const fontSans = FontSans({
@@ -11,12 +11,7 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-const GlobalError = ({
-  reset,
-}: {
-  readonly error: Error & { digest?: string };
-  readonly reset: () => void;
-}) => {
+const GlobalError = () => {
   return (
     <html lang="en">
       <body
@@ -34,9 +29,13 @@ const GlobalError = ({
               later.
             </P>
 
-            <div className="mt-6">
-              <Button onClick={() => reset()}>Retry</Button>
-            </div>
+            <Link
+              className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              href="/"
+              prefetch={false}
+            >
+              Return to home
+            </Link>
           </div>
         </div>
       </body>

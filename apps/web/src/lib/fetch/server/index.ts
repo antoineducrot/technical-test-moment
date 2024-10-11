@@ -1,7 +1,6 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 import {
   ApiErrorResponseBody,
@@ -44,12 +43,6 @@ const convertToOutput = async <Output>(
   );
 };
 
-const checkAuth = async (response: Response) => {
-  if (response.status === 401) {
-    redirect("/login");
-  }
-};
-
 const REQUEST = async <Output, Input>(
   url: string,
   method: string,
@@ -68,8 +61,6 @@ const REQUEST = async <Output, Input>(
     },
     ...(data && { body: JSON.stringify(data) }),
   });
-
-  checkAuth(response);
 
   return convertToOutput(response, isOutput);
 };

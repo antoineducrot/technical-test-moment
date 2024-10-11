@@ -7,7 +7,7 @@
   "scripts": {
     "dev:db:start": "./docker/pg-admin/generate-servers.sh && docker-compose -f docker-compose.dev.yml up --build -d",
     "dev:db:stop": "docker-compose -f docker-compose.dev.yml down",
-    "prod:start": "docker-compose -f docker-compose.yml up --build -d",
+    "prod:start": "./docker/pg-admin/generate-servers.sh && docker-compose -f docker-compose.yml up --build -d",
     "prod:stop": "docker-compose -f docker-compose.yml down",
     "db:generate": "turbo db:generate",
     "db:push": "turbo db:push",
@@ -40,7 +40,7 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@10.8.2",
+  "packageManager": "npm@10.9.0",
   "workspaces": [
     "apps/*",
     "packages/*"

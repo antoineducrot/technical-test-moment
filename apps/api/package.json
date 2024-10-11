@@ -10,7 +10,6 @@
     "start": "node dist/main",
     "lint": "eslint .",
     "test:watch": "jest --watch",
-    "type-check": "tsc --noEmit",
     "db:generate": "prisma generate",
     "db:push": "prisma db push --skip-generate",
     "db:migrate-deploy": "prisma migrate deploy",
